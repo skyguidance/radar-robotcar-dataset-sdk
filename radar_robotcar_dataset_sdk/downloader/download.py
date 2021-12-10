@@ -179,11 +179,11 @@ def main(unused_args):
                 filename = "_".join([downld[0], downld[1].replace(' ', '_').replace('/', '--')])
                 downloaded_zip_file_path = gdrive_handler.download_filename(filename)
 
-                print(f"\nExtracting into: {FLAGS.download_folder} ...")
-                downloaded_zip_file = zipfile.ZipFile(downloaded_zip_file_path, allowZip64=True)
-                downloaded_zip_file.extractall(FLAGS.download_folder)
+                # print(f"\nExtracting into: {FLAGS.download_folder} ...")
+                # downloaded_zip_file = zipfile.ZipFile(downloaded_zip_file_path, allowZip64=True)
+                # downloaded_zip_file.extractall(FLAGS.download_folder)
                 print(f"Deleting Zip File {downloaded_zip_file_path} ...")
-                os.remove(downloaded_zip_file_path)
+                # os.remove(downloaded_zip_file_path)
 
         print(f"\nDownload completed into: {FLAGS.download_folder}\n")
 
