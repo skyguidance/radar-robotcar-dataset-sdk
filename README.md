@@ -41,7 +41,7 @@ Installation
 
 ```bash
 # Either clone the package manually and add it to your PYTHONPATH or install it using:
-pip install git+https://git@github.com/dbarnes/radar-robotcar-dataset-sdk.git
+pip install git+https://git@github.com/skyguidance/radar-robotcar-dataset-sdk.git
 ```
 
 Data Download
