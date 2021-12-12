@@ -40,14 +40,21 @@ class GDriveHandler:
         self.__authorise_if_needed()
 
     def download_filename(self, filename):
+        
         output_path_raw = os.path.join(self.download_dir, filename)
+        output_path_zip = output_path_raw + ".zip"
+        
+        if os.path.exists(output_path_zip):
+            print("GDriveHanlder:{} is already exists and will skip downloading!")
+            return output_path_zip
+        
         args = self.call_args + ["--progress", "copy", _rclone_rrcd_conf_drive_path + filename, self.download_dir]
 
         subprocess.check_call(args)
         if not os.path.isfile(output_path_raw):
             raise RuntimeError('Unexpected error in downloading file to: {}'.format(output_path_raw))
 
-        output_path_zip = output_path_raw + ".zip"
+        
         shutil.move(output_path_raw, output_path_zip)
         if not os.path.isfile(output_path_zip):
             raise RuntimeError('Unexpected error in adding zip extension to file: {}'.format(output_path_raw))
