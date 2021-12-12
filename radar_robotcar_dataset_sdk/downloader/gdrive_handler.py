@@ -45,12 +45,17 @@ class GDriveHandler:
         output_path_zip = output_path_raw + ".zip"
         
         if os.path.exists(output_path_zip):
-            print("GDriveHanlder:{} is already exists and will skip downloading!")
+            print("GDriveHanlder:{} is already exists and will skip downloading!".format(filename))
             return output_path_zip
         
         args = self.call_args + ["--progress", "copy", _rclone_rrcd_conf_drive_path + filename, self.download_dir]
-
-        subprocess.check_call(args)
+        try:
+            subprocess.check_call(args)
+        except:
+            print("GDriveHandler:{} download error. This may due to download quota exceeded or rclone process error.".format(filename))
+            os.remove(output_path_raw)
+            return output_path_zip
+        
         if not os.path.isfile(output_path_raw):
             raise RuntimeError('Unexpected error in downloading file to: {}'.format(output_path_raw))
 
