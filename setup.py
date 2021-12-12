@@ -20,7 +20,7 @@ with open(os.path.join(dir_path, 'requirements.txt')) as f:
     required = f.read().splitlines()
 
 setup(name='radar-robotcar-dataset-sdk',
-      version='0.1',
+      version='0.1.1',
       description='Oxford Radar RobotCar Dataset SDK',
       long_description=open('README.md').read(),
       url='http://github.com/dbarnes/radar-robotcar-dataset-sdk',
